@@ -1,0 +1,35 @@
+{
+  "name": "typescript-binance-cli-starter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A simple and zero-opinion typescript starter template for building cross-platform node-binance-api command line applications.",
+  "keywords": [
+    "typescript",
+    "cli",
+    "node-binance-api"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "bin": "./dist/cli.js",
+  "files": [
+    "dist/**/*",
+    "!dist/**/*.test.js"
+  ],
+  "scripts": {
+    "dev": "ts-node ./src/cli.ts",
+    "clean": "rimraf ./dist/ ./exec/",
+    "build": "npm run clean && tsc",
+    "bundle": "npm run build && pkg . -t node14-linux,node14-win,node14-macos --out-dir ./exec/"
+  },
+  "devDependencies": {
+    "ava": "^2.2.0",
+    "pkg": "^4.4.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "commander": "^2.20.0",
+    "node-binance-api": "^0.13.1"
+  }
+}
