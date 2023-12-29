@@ -1,16 +1,18 @@
 #!/usr/bin/env node
 
-import program from 'commander'
-
 import {runBinanceSession} from './index'
+import {Command, OptionValues} from "commander";
 
+let program : Command = new Command();
 program
-  .version('0.1.0')
-  .option('-apikey, --APIKEY', 'APIKEY')
-  .option('-apisecret, --APISECRET', 'APISECRET')
-  .parse(process.argv)
+  .version('0.1.1')
+  .description('CLI for binance')
+  .option('--apikey', 'binance APIKEY')
+  .option('--apisecret', 'binance APISECRET')
+  .parse(process.argv);
 
-runBinanceSession({
-  apikey: program.APIKEY,
-  apisecret: program.APISECRET
-}).then(result => console.log(result.message))
+const options:OptionValues = program.opts();
+
+const defaultConfig = {APIKEY: options.apikey, APISECRET: options.apisecret,'family': 4,}
+
+runBinanceSession(defaultConfig).then(result => console.log(result.message))

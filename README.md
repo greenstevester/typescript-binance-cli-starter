@@ -37,7 +37,8 @@ You can pass arguments to your application by running `npm run dev -- --your-arg
 Removes any built code and any built executables.
 
 ### **build**
-
+`npm install ts-node`
+`npm i @types/node`
 `npm run build`
 
 Cleans, then builds the TypeScript code.
